@@ -33,11 +33,12 @@ def save_movies(year=2015, per_page=10, sleep_time=1):
 
     all_data = []
     # total_pages 만큼 Loop 돌면서 API 호출
-    for page in tqdm(range(1, total_pages + 1)):
-        time.sleep(sleep_time)
-        r = req(url_base + f"&curPage={page}")
-        d = r['movieListResult']['movieList']
-        all_data.extend(d)
+    
+    for page in range(1, 11):   
+        time.sleep(sleep_time)  
+        r = req(url_base + f"&curPage={page}&itemPerPage={per_page}")  
+        d = r.get('movieListResult', {}).get('movieList', [])  
+        all_data.extend(d)  
 
     save_json(all_data, file_path)
     return True
