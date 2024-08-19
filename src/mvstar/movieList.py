@@ -18,7 +18,7 @@ def req(url):
     return r
 
 def save_movies(year=2015, per_page=10, sleep_time=1):
-    file_path = f'data/movies/year={year}/movieList.json'
+    file_path = f'data/movielist/year={year}/movieList.json'
     
     # 위 경로가 있으면 API 호출을 멈추고 프로그램 종료
     if os.path.exists(file_path):
